@@ -1,7 +1,7 @@
 using ACME
 using Test
 
-include("..\\src\\diyloader.jl")
+include("..\\src\\AudioToaster.jl")
 
 circuitfrommacro = @circuit begin
     r1 = resistor(1e4)
@@ -9,7 +9,7 @@ circuitfrommacro = @circuit begin
     src = voltagesource(), [+] ⟷ r1[1], [-] ⟷ gnd
     prb = voltageprobe(), [+] ⟷ c1[1], [-] ⟷ gnd
 end
-circuitfromfile = DIYLoader.loadfile("acme\\examples\\simplest.diy")
+circuitfromfile = AudioToaster.loadfile("examples\\simplest.diy")
 modelfrommacro = DiscreteModel(circuitfrommacro, 1/44100)
 modelfromfile = DiscreteModel(circuitfromfile, 1/44100)
 testdata = reshape(rand(1000) .* 2.0 .- 1.0, 1, :)

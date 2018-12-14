@@ -1,4 +1,4 @@
-module DIYLoader
+module AudioToaster
 
 #=
 n == "boards.TriPadBoard" ||
@@ -68,6 +68,7 @@ function process(model::DiscreteModel, inputfile::String, outputfile::String)
     y, fs, nbits = wavread(inputfile)
     processed = run!(model, reshape(y, 1, :))
     wavwrite(reshape(processed, length(processed), 1), outputfile, Fs=fs, nbits=nbits)
+    return model
 end
 
 function process(circuit::Circuit, inputfile::String, outputfile::String)
@@ -75,7 +76,7 @@ function process(circuit::Circuit, inputfile::String, outputfile::String)
     model = DiscreteModel(circuit, 1/fs)
     processed = run!(model, reshape(y, 1, :))
     wavwrite(reshape(processed, length(processed), 1), outputfile, Fs=fs, nbits=nbits)
-
+    return model
 end
 
 function iswithin(rect::Rectangle, point::Point)::Bool
@@ -262,4 +263,4 @@ function loadfile(filepath::String)
     return circ
 end
 
-end # module DIYLoader
+end # module AudioToaster

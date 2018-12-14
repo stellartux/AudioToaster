@@ -1,5 +1,5 @@
-authors = ["Danny Robinson <dannyrobinson@gmx.com>"]
-name = "DIYLoader"
+authors = ["Danny Robinson"]
+name = "AudioToaster"
 uuid = "aca67d70-ff57-11e8-08c3-1f1f661021ac"
 version = "0.1.0"
 
